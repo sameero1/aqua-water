@@ -1,4 +1,6 @@
-const API_BASE = 'http://127.0.0.1:3000/api';
+// API base can be overridden by setting `window.API_BASE` in the page (useful for deployment).
+let API_BASE = window.API_BASE || 'http://127.0.0.1:3000/api';
+const IS_LOCALHOST = location.hostname === '127.0.0.1' || location.hostname === 'localhost';
 const mode = document.body.dataset.authMode || 'login';
 
 const pageActionLabel = mode === 'register' ? 'Create account' : 'Sign in';
@@ -87,7 +89,14 @@ async function requestOtp() {
     otpInput?.focus();
 
   } catch (error) {
-    showStatus(error.message || 'Failed to request OTP.', 'error');
+    // Network failures (e.g. when site is hosted on GitHub Pages) often produce a
+    // generic "Failed to fetch" TypeError. Provide a clear, actionable message.
+    const msg = (error && error.message) ? error.message : 'Failed to request OTP.';
+    if (msg.toLowerCase().includes('failed to fetch') || msg.toLowerCase().includes('network')) {
+      showStatus('Unable to contact the backend API. If this site is served statically (GitHub Pages), please deploy the backend or run it locally. See the project README for deployment steps.', 'error');
+    } else {
+      showStatus(msg || 'Failed to request OTP.', 'error');
+    }
   } finally {
     setLoading(false);
   }
@@ -129,7 +138,12 @@ async function verifyOtp() {
 
   } catch (error) {
     console.error('OTP verify error:', error);
-    showStatus(error.message || 'OTP verification failed.', 'error');
+    const msg = (error && error.message) ? error.message : 'OTP verification failed.';
+    if (msg.toLowerCase().includes('failed to fetch') || msg.toLowerCase().includes('network')) {
+      showStatus('Unable to contact the backend API to verify OTP. Deploy the backend or run it locally and update `API_BASE` accordingly.', 'error');
+    } else {
+      showStatus(msg || 'OTP verification failed.', 'error');
+    }
   } finally {
     setLoading(false);
   }
