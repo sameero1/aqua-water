@@ -26,7 +26,7 @@ const backLink       = document.getElementById('backLink');
 if (titleText)   titleText.textContent  = pageActionLabel;
 if (descText)    descText.textContent   = pageSubtext;
 if (badgeText)   badgeText.textContent  = mode === 'register' ? 'Register new account' : 'Login securely';
-if (backLink)    backLink.href          = 'Index.html';
+if (backLink)    backLink.href          = 'index.html';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function setLoading(isLoading) {

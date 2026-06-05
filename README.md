@@ -4,7 +4,7 @@ This workspace contains a local frontend and a backend API for OTP-based login.
 
 ## Files
 
-- `Index.html` — animated landing page with links to Login and Register
+- `index.html` — animated landing page with links to Login and Register
 - `login.html` — dedicated login page with OTP request and verification
 - `register.html` — dedicated registration page with OTP request and verification
 - `styles.css` — shared animated theme and page styling
@@ -48,7 +48,7 @@ python -m http.server 8000
 Then open one of these pages:
 
 ```text
-http://127.0.0.1:8000/Index.html
+http://127.0.0.1:8000/index.html
 http://127.0.0.1:8000/login.html
 http://127.0.0.1:8000/register.html
 ```
@@ -67,5 +67,5 @@ Copy `backend/.env.sample` to `backend/.env` and fill in real SMTP credentials i
 
 ## Notes
 
-- The frontend must be served from the app folder so the browser can load `Index.html` directly.
+- The frontend must be served from the app folder so the browser can load `index.html` directly.
 - The backend supports CORS from `http://127.0.0.1:8000` and `http://localhost:8000`.
