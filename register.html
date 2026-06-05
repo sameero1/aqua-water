@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — Barcode Payment</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-auth-mode="register">
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="Index.html"><span class="mark"></span>Barcode Pay</a>
+      <nav class="nav-links">
+        <a class="nav-link" href="login.html">Login</a>
+        <a class="nav-link active" href="register.html">Register</a>
+      </nav>
+    </header>
+
+    <main class="hero-panel">
+      <section class="hero-card">
+        <span class="hero-badge">Welcome aboard</span>
+        <div class="hero-copy">
+          <h1>Create your premium payment account.</h1>
+          <p>Register with your email and receive a secure OTP to complete your account setup. Designed for a modern, polished onboarding experience.</p>
+          <div class="hero-actions">
+            <a class="secondary-button" href="login.html">Already have an account?</a>
+            <a id="backLink" class="secondary-button" href="Index.html">Back to home</a>
+          </div>
+        </div>
+        <div class="pulse-ring one"></div>
+        <div class="pulse-ring two"></div>
+      </section>
+
+      <section class="auth-card">
+        <h2 class="form-title">Create account</h2>
+        <p class="form-description">Enter your email to begin registration, then verify with the OTP sent to your inbox.</p>
+
+        <div class="form-panel">
+          <div class="field">
+            <label for="email">Email address</label>
+            <input id="email" type="email" placeholder="you@company.com" autocomplete="email" />
+          </div>
+
+          <div class="actions">
+            <button type="button" id="requestOtp" data-label="Send OTP" class="button-primary">Send OTP</button>
+          </div>
+
+          <div class="field">
+            <label for="otp">One-time code</label>
+            <input id="otp" type="text" placeholder="123456" autocomplete="one-time-code" />
+          </div>
+
+          <div class="actions">
+            <button type="button" id="verifyOtp" class="button-primary">Verify OTP</button>
+          </div>
+
+          <div class="status-card">
+            <strong>Status</strong>
+            <p id="statusText">A verification code will be sent instantly to your inbox.</p>
+          </div>
+
+          <div id="previewSection" class="preview-card hidden">
+            <strong>Email preview</strong>
+            <p><a id="previewLink" class="preview-link" target="_blank" rel="noopener noreferrer"></a></p>
+            <p class="footer-note">If the OTP doesn't arrive in your inbox, open the preview link above to view it.</p>
+          </div>
+
+          <div id="profileCard" class="profile-card hidden">
+            <strong>Registered</strong>
+            <dl>
+              <div>
+                <dt>Email</dt>
+                <dd id="profileEmail"></dd>
+              </div>
+              <div>
+                <dt>Status</dt>
+                <dd id="profileStatus"></dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="auth.js"></script>
+</body>
+</html>

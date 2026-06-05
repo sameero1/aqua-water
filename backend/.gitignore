@@ -1,0 +1,13 @@
+# Node dependencies
+node_modules/
+
+# Environment and secret files
+.env
+
+# Local database files
+data.sqlite*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
